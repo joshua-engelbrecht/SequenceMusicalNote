@@ -1,0 +1,34 @@
+﻿<Window x:Class="FibonacciSequencePlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FibonacciSequencePlayer"
+        xmlns:MyEnumerations="clr-namespace:FibonacciSequencePlayer.Models"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="ScaleListValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="MyEnumerations:ScaleList" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="NumberListValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="MyEnumerations:NumberList" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Height="181" Margin="10,41,0,0" VerticalAlignment="Top" Width="213" x:Name="ScaleListBox" ItemsSource="{Binding Source={StaticResource ScaleListValues}}" SelectedItem="{Binding Path=CurrentScale}"/>
+        <ListBox x:Name="SequenceList" HorizontalAlignment="Left" Height="399" Margin="244,10,0,0" VerticalAlignment="Top" Width="407"/>
+        <Button x:Name="PlayButton" Content="Play" HorizontalAlignment="Left" Margin="656,389,0,0" VerticalAlignment="Top" Width="106" Click="PlayButton_Click"/>
+        <ListBox HorizontalAlignment="Left" Height="151" Margin="10,258,0,0" VerticalAlignment="Top" Width="213" x:Name="NumberListBox" ItemsSource="{Binding Source={StaticResource NumberListValues}}" SelectedItem="{Binding CurrentScale}"/>
+        <TextBox x:Name="NumberOfDigits" HorizontalAlignment="Left" Height="23" Margin="656,361,0,0" TextWrapping="Wrap" Text="35" VerticalAlignment="Top" Width="106"/>
+        <Label x:Name="label" Content="How Many Digits?" HorizontalAlignment="Left" Margin="656,330,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.636,0.523"/>
+        <Label x:Name="label1" Content="Number Pattern" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" Width="213"/>
+        <Label x:Name="label2" Content="Music Scale" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
